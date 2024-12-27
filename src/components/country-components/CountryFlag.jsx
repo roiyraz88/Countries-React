@@ -1,7 +1,7 @@
-const CountryFlag = (props) => {
+const CountryFlag = ({src, alt}) => {
   return (
     <div className="country-flag">
-      <img src={props.src} alt={`${props.alt} flag`} />
+      <img src={src} alt={`${alt} flag`} />
     </div>
   );
 };

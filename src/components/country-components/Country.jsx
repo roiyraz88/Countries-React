@@ -1,23 +1,17 @@
 import UnOrderedList from "../ui-elements/UnOrderedList";
 
-const Country = (props) => {
+const Country = ({ country }) => {
+  const { name, population, region, capital } = country;
+  const countryDetails = [
+    { label: "Population:", value: population },
+    { label: "Region:", value: region },
+    { label: "Capital:", value: capital },
+  ];
+
   return (
     <div className="country-info">
-      <h2 className="country-title">{props.country.name}</h2>
-      <UnOrderedList className="country-brief">
-        <li>
-          <strong>population: </strong>
-          {props.country.population}
-        </li>
-        <li>
-          <strong>Region: </strong>
-          {props.country.region}
-        </li>
-        <li>
-          <strong>capital: </strong>
-          {props.country.capital}
-        </li>
-      </UnOrderedList>
+      <h2 className="country-title">{name}</h2>
+      <UnOrderedList className="country-brief" items={countryDetails} />
     </div>
   );
 };

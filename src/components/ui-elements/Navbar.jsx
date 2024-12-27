@@ -9,11 +9,7 @@ const Navbar = () => {
   });
 
   useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add("dark-theme");
-    } else {
-      document.body.classList.remove("dark-theme");
-    }
+    document.body.classList.toggle("dark-theme", isDarkMode);
     localStorage.setItem("isDarkMode", isDarkMode);
   }, [isDarkMode]);
 

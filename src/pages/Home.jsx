@@ -26,6 +26,7 @@ const Home = () => {
 
   const filterByRegion = (region) => {
     setSelectedRegion(region);
+
     const filteredCountries = datajson.filter(
       (country) => region === "All" || country.region === region
     );

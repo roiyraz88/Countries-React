@@ -1,7 +1,12 @@
-const UnOrderedList = (props) => {
+const UnOrderedList = ({ className, items }) => {
   return (
-    <ul className={props.className} id={props.id}>
-        {props.children}
+    <ul className={className}>
+      {items.map((item, index) => (
+        <li key={index} {...item.extraProps}>
+          <strong>{item.label} </strong>
+          {item.value}
+        </li>
+      ))}
     </ul>
   );
 };

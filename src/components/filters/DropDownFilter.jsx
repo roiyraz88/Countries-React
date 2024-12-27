@@ -1,11 +1,7 @@
 import UnOrderedList from "../ui-elements/UnOrderedList";
 
-const DropDownFilter = (props) => {
-  const { isOpen, onClick, filterByRegion, region } = props;
-  const handleRegionClick = (region) => {
-    filterByRegion(region);
-    onClick();
-  };
+const DropDownFilter = ({ onClick, isOpen, filterByRegion, region }) => {
+  const regions = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
 
   return (
     <div className={`dropdown-wrapper ${isOpen ? "open" : ""}`}>
@@ -19,32 +15,18 @@ const DropDownFilter = (props) => {
         <i className="fa-regular fa-chevron-down icon"></i>
       </div>
       <div className="dropdown-body">
-        <UnOrderedList id="list-by-region">
-          <li onClick={() => handleRegionClick("All")} data-region="all">
-            All
-          </li>
-          <li onClick={() => handleRegionClick("Africa")} data-region="africa">
-            Africa
-          </li>
-          <li
-            onClick={() => handleRegionClick("Americas")}
-            data-region="americas"
-          >
-            America
-          </li>
-          <li onClick={() => handleRegionClick("Asia")} data-region="asia">
-            Asia
-          </li>
-          <li onClick={() => handleRegionClick("Europe")} data-region="europe">
-            Europe
-          </li>
-          <li
-            onClick={() => handleRegionClick("Oceania")}
-            data-region="oceania"
-          >
-            Oceania
-          </li>
-        </UnOrderedList>
+        <UnOrderedList
+          id="list-by-region"
+          items={regions.map((regionItem) => ({
+            label: regionItem,
+            extraProps: {
+              onClick: () => {
+                filterByRegion(regionItem);
+                onClick();
+              },
+            },
+          }))}
+        />
       </div>
     </div>
   );
