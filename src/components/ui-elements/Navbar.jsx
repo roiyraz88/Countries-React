@@ -5,7 +5,7 @@ import Button from "./Button";
 const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedMode = localStorage.getItem("isDarkMode");
-    return savedMode === "true" || false;
+    return savedMode === "true" ? true : false;
   });
 
   useEffect(() => {
